@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add ads</title>
-</head>
-<body>
-  <h1>
-    Add ads
-  </h1>
-  <div>
-    <a href="{% url 'index'%}">main</a>
-    {% for rubric in rubrics %}
-      <a href="{% url 'by_rubric' rubric.pk %}">
-        {{rubric.name}}
-      </a>
-    {% endfor %}
-  </div>
-  <form method='post'>
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value='add'>
-  </form>
-</body>
-</html>
+{% extends 'layout/basic.html' %}
+{% block title %} Add ads {% endblock title %}
+{% block content %}
+<form method="post">
+  {% csrf_token %} {{form.as_p}}
+  <input type="submit" value="add" />
+</form>
+{% endblock content %}
